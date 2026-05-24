@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculater</title>
+</head>
+<style>
+     body{
+        margin: 0px;
+        padding: 0px;
+        background: #000;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Arial', sans-serif;
+     }
+     #selfie{
+        width: 80px;
+        height: 7px;
+        padding: 2px;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px auto;
+        background-color: #242222;
+        
+        
+     }
+    #name{
+        padding-top: 20px;
+        text-align: center;
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    #box{
+        margin: 20px;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        background: #1c1c1c;
+        border: 1px solid #333;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        box-sizing: border-box;
+    }
+        #inp {
+         width: 100%;
+         padding: 15px;
+         font-size: clamp(16px, 5vw, 24px);
+         margin-bottom: 20px;
+         border: none;
+         border-radius: 10px;
+         text-align: right;
+         background: #333;
+         color: #fff;
+         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+         box-sizing: border-box;
+}
+    #inpsec{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      
+    }
+    button{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        font-size: clamp(14px, 4vw, 20px);
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        overflow: hidden;
+    }
+    button:hover{
+        background: linear-gradient(135deg, #5a5a5a 0%, #3a3a3a 100%);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
+    button:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+   
+    
+    #btnsec{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        justify-items: stretch;
+        align-items: stretch;
+        width: 100%;
+    }
+    
+    @media (max-width: 480px) {
+        #box {
+            max-width: 100%;
+            padding: 15px;
+        }
+        #btnsec {
+            gap: 10px;
+        }
+        #name {
+            font-size: 20px;
+            padding-top: 15px;
+        }
+    }
+    
+    @media (max-width: 320px) {
+        #box {
+            padding: 10px;
+            margin: 10px;
+        }
+        #btnsec {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+    }
+
+    #clearitem{
+        grid-column: span 1;
+    }
+    .del-btn {
+        background: linear-gradient(135deg, #ff5a52 0%, #ff3b30 100%);
+        color: white;
+    }
+    .del-btn:hover {
+        background: linear-gradient(135deg, #ff6e6a 0%, #ff4d42 100%);
+        box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .equal-btn {
+        background: linear-gradient(135deg, #34c759 0%, #30b954 100%);
+        color: white;
+        grid-column: span 1;
+        font-size: clamp(16px, 5vw, 22px);
+    }
+    .equal-btn:hover {
+        background: linear-gradient(135deg, #4dd865 0%, #45d460 100%);
+        box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .sqrt-btn {
+        background: linear-gradient(135deg, #5ac8fa 0%, #00b4d8 100%);
+        color: white;
+    }
+    .sqrt-btn:hover {
+        background: linear-gradient(135deg, #6dd8ff 0%, #1fc8ff 100%);
+        box-shadow: 0 4px 12px rgba(90, 200, 250, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .operator {
+        background: linear-gradient(135deg, #ff9500 0%, #ff8c00 100%);
+        color: white;
+    }
+    .operator:hover {
+        background: linear-gradient(135deg, #ffaa2e 0%, #ffb81a 100%);
+        box-shadow: 0 4px 12px rgba(255, 149, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+  
+
+    
+</style>
+<body>
+        <div id="box">
+        <input id="selfie" placeholder=" <Calculater>">
+        <h1 id="name">Boopathy</h1>
+        <div id="inpsec">
+        <input id="inp" type="text"></div>
+        <div id="btnsec">
+        <button onclick="collect('(')" class="operator">(</button>
+        <button onclick="collect(')')" class="operator">)</button>
+        <button onclick="collect('%')" class="operator">%</button>
+        <button onclick="del()" class="del-btn">Del</button>
+        <button onclick="clearitem()" id="clearitem" class="del-btn">C</button>
+        <button onclick="sqrt()" class="sqrt-btn">√</button>
+        <button onclick="collect('/')" class="operator">&divide;</button>
+        <button onclick="collect('7')">7</button>
+        <button onclick="collect('8')">8</button>
+        <button onclick="collect('9')">9</button>
+        <button onclick="collect('+')" class="operator">&plus;</button>
+        <button onclick="collect('4')">4</button>
+        <button onclick="collect('5')">5</button>
+        <button onclick="collect('6')">6</button>
+        <button onclick="collect('-')" class="operator">&minus;</button> 
+        <button onclick="collect('1')">1</button>
+        <button onclick="collect('2')">2</button>
+        <button onclick="collect('3')">3</button>
+        <button onclick="collect('*')" class="operator">&times;</button>
+        <button onclick="collect('0')">0</button>
+        <button onclick="collect('00')">00</button>
+        <button onclick="collect('.')">.</button>
+        <button onclick="ans()" class="equal-btn">=</button></div>
+         
+    </div>
+   
+</body>
+   
+</body>
+<script>
+   let inp= document.getElementById("inp")
+     let val=""
+   function collect(e){
+    val+=e
+    inp.value=val
+    
+   }
+
+   function ans(){
+    try{
+      if(val === ""){
+        inp.value = "0"
+        return
+      }
+      let result = eval(val)
+      val = ""
+      inp.value = result
+    }catch(error){
+      inp.value = "Error"
+      val = ""
+    }
+   }
+
+   function clearitem(){
+    inp.value=""
+    val=""
+   }
+
+   function del(){
+    val = val.slice(0, -1);
+    inp.value = val;
+   }
+   
+   function sqrt(){
+    try{
+      if(val === ""){
+        return
+      }
+      let result = Math.sqrt(eval(val))
+      val = result
+      inp.value = result
+    }catch(error){
+      inp.value = "Error"
+      val = ""
+    }
+   }
+   
+</script>
+</html>
